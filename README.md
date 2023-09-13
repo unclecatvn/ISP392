@@ -1,9 +1,7 @@
 # Online Learning Website - Assignment ISP392 - IS1703
 *The main project folder that for learning, practicing and taking assignment score in class*
 ## Screenflow
-<div  align="center">
-  <img  src="https://github.com/unclecatvn/ISP392/blob/main/screenflow/screenflow.png"  alt="Screenflow"  width="100%"></img>
-  </div>
+  <img  src="https://github.com/unclecatvn/ISP392/blob/main/screenflow/screenflow.png"  alt="Screenflow"  width="50%"></img>
 ### Implementing Priorities
 | Priority  | Screens (Prioritize from left to right)  |
 | ------------- | ------------- |
