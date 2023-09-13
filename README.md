@@ -11,9 +11,9 @@
 | #3  | Statistic, Edit test, Edit profile  |
 ## Preview Screenshot
  **1. Nav bar**
-  - User hasn’t logged in
+ - User hasn’t logged in
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0006.jpg"  alt="User hasn’t logged in"  width="100%">
-  - Admin
+- Admin
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0007.jpg"  alt="View profile"  width="100%">
   - User has logged in
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0008.jpg"  alt="View profile"  width="100%">
