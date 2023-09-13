@@ -10,14 +10,14 @@
 | #2  | Forgot password, Change password, Create class, Update class, View profile detail, View student + teacher detail in class, View test detail  |
 | #3  | Statistic, Edit test, Edit profile  |
 ## Preview Screenshot
-<div  align="center">
-  **1. Nav bar**
+ **1. Nav bar**
   - User hasn’t logged in
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0006.jpg"  alt="User hasn’t logged in"  width="100%">
   - Admin
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0007.jpg"  alt="View profile"  width="100%">
   - User has logged in
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0008.jpg"  alt="View profile"  width="100%">
+<div  align="center">
   **2. Frontend** 
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0001.jpg"  alt="Home Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0002.jpg"  alt="Login Bar"  width="45%"></img>
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0003.jpg"  alt="Register"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/unclecatvn/ISP392/blob/main/preview/ISP_page-0004.jpg"  alt="Forgot Password"  width="45%"></img>
