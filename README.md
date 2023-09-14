@@ -1,7 +1,7 @@
 # Online Learning Website - Assignment ISP392 - IS1703
 *The main project folder that for learning, practicing and taking assignment score in class*
 ## Screenflow
-  <img  src="https://github.com/unclecatvn/ISP392/blob/main/screenflow/screenflow.png"  alt="Screenflow"  width="50%"></img>
+  <img  src="https://github.com/unclecatvn/ISP392/blob/main/screenflow/screenflow.jpg"  alt="Screenflow"  width="50%"></img>
 ## Database Scheme
 <img  src="https://github.com/unclecatvn/ISP392/blob/main/database/database.jpg"  alt="Database"  width="50%"></img>
 ## Implementing Priorities
