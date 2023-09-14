@@ -3,7 +3,7 @@
 ## Screenflow
   <img  src="https://github.com/unclecatvn/ISP392/blob/main/screenflow/screenflow.png"  alt="Screenflow"  width="50%"></img>
 ## Database Scheme
-<img  src="https://github.com/unclecatvn/ISP392/blob/main/database/database.png"  alt="Database"  width="50%"></img>
+<img  src="https://github.com/unclecatvn/ISP392/blob/main/database/database.jpg"  alt="Database"  width="50%"></img>
 ## Implementing Priorities
 | Priority  | Screens (Prioritize from left to right)  |
 | ------------- | ------------- |
