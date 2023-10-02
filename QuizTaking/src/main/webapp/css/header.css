@@ -1,0 +1,3 @@
+btn btn-secondary dropdown-toggle::after {
+    display:none;
+}
