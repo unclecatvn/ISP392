@@ -4,7 +4,6 @@
  */
 package controller;
 
-import Model.Classes;
 import Model.Enroll;
 import Model.User;
 import dal.EnrollDAO;
@@ -15,7 +14,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -64,10 +62,11 @@ public class ViewListUser extends HttpServlet {
             throws ServletException, IOException {
         UserDAO udb = new UserDAO();
         ArrayList<User> u = udb.getAllUser();
-        EnrollDAO edb = new EnrollDAO();
-        ArrayList<Enroll> e = edb.getAllCourse();
-        request.setAttribute("listE", e);
+        ArrayList<User> uS = udb.getAssignedStudent();
+        ArrayList<User> uT = udb.getAssignedTeacher();
         request.setAttribute("listS", u);
+        request.setAttribute("listSS", uS);
+        request.setAttribute("listST", uT);
         request.getRequestDispatcher("viewListUser.jsp").forward(request, response);
     }
 

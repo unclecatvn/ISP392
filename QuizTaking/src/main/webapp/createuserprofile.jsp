@@ -13,6 +13,7 @@
         <title>Admin create user's profile</title>
         <link rel="stylesheet" href="./css/createuserprofile.css"/>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png"/>
 
         <style>
 
@@ -43,34 +44,39 @@
             }
 
         </style>
-        
+
         <script>
-            function validateForm(){
+            function validateForm() {
                 var rollNumber = document.create.rollNumber.value;
                 var userName = document.create.user_name.value;
                 //var password = document.create.password.value;
                 var email = document.create.email.value;
                 var phone = document.create.phone.value;
+                //var submitBtn = document.getElementById("submitBtn");
+                var statusR = false;
+                var statusN = false;
+                var statusE = false;
+                var statusP = false;
                 var status = false;
-                
+
                 //check roll number
-                if(!/^(HE|HF)\d{6}$/.test(rollNumber)){
+                if (!/^(HE|HF)\d{6}$/.test(rollNumber)) {
                     document.getElementById("rollNumberError").innerHTML = "Roll number must start with HE or HF and 6 digits";
-                    status = false;
-                }else{
+                    statusR = false;
+                } else {
                     document.getElementById("rollNumberError").innerHTML = "";
-                    status = true;
+                    statusR = true;
                 }
-                
+
                 //check username
-                if(!/^[a-zA-Z\s]+$/.test(userName)){
+                if (!/^[a-zA-Z\s]+$/.test(userName)) {
                     document.getElementById("userNameError").innerHTML = "Username contains only letters";
-                    status = false;
-                }else{
+                    statusN = false;
+                } else {
                     document.getElementById("userNameError").innerHTML = "";
-                    status = true;
+                    statusN = true;
                 }
-                
+
                 //check password
 //                if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)){
 //                    document.getElementById("passwordError").innerHTML = "At least 1 uppercase, 1 lowercase, 1 special character, 1 number, length > 8 characters";
@@ -79,28 +85,35 @@
 //                    document.getElementById("passwordError").innerHTML = "";
 //                    status = true;
 //                }
-                
+
                 //check email
-                if(!/^[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn|fe\.edu\.vn)$/.test(email)){
+                if (!/^[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn|fe\.edu\.vn)$/.test(email)) {
                     document.getElementById("emailError").innerHTML = "must end with @fpt.edu.vn or @gmail.com or @fe.edu.vn";
-                    status = false;
-                }else{
+                    statusE = false;
+                } else {
                     document.getElementById("emailError").innerHTML = "";
-                    status = true;
+                    statusE = true;
                 }
-                
+
                 //check phone
-                if(!/^\d{10,11}$/.test(phone)){
+                if (!/^\d{10,11}$/.test(phone)) {
                     document.getElementById("phoneError").innerHTML = "contain 10-11 numbers";
-                    status = false;
-                }else{
+                    statusP = false;
+                } else {
                     document.getElementById("phoneError").innerHTML = "";
-                    status = true;
+                    statusP = true;
                 }
+
+                if (statusR && statusN && statusE && statusP) {
+                    status = true;
+                } else {
+                    status = false;
+                }
+
                 return status;
             }
         </script>
-   </head>
+    </head>
     <body>
 
         <c:if test="${sessionScope.user == null}">
@@ -116,7 +129,7 @@
                         <h1>Create User Profile</h1>
 
                         <div class="container mt-5" style="background-color: #F8F5F5; padding: 20px; border-radius: 10px;">
-                            <form name="create" action="createprofileadmin" method="post" onsubmit="return validateForm()">
+                            <form id="create" name="create" action="createprofileadmin" method="post" onsubmit="return validateForm()">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="center" style="display: flex;">
@@ -126,30 +139,23 @@
                                                 <div class="position-relative">
                                                     <input id="rollNumber" value="${u.rollNumber}" class="form-control" style="padding: .375rem .75rem; width: 95%" type="text" name="rollNumber" autofocus="" required maxlength="8">
                                                     <span id="rollNumberError" class="error-message position-absolute"></span>
+                                                    <div class="d-block text-danger" style="margin-top:10px;margin-bottom:10px"><b>${messR}</b></div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-5 col-lg-6 mb-3" style="display: grid;">
-                                                <label for="email" class="form-label">Username</label>
+                                                <label for="email" class="form-label">Full Name</label>
                                                 <div class="position-relative">
                                                     <input id="user_name" value="${u.userName}" class="form-control" type="text" id="password" name="user_name" class="form-control"  required minlength="4">
                                                     <span id="userNameError" class="error-message position-absolute"></span>
                                                 </div> 
                                             </div> 
                                         </div>
-                                        <div class="center" style="display: flex;">
-<!--                                            <div class="col-sm-6 col-md-5 col-lg-6 mb-3" style="display: grid;">
-                                                <label for="newPassword" class="form-label">Password</label>
-                                                <div class="position-relative">
-                                                    <input id="password" value="${u.password}"class="form-control" style="padding: .375rem .75rem; width: 95%" type="text" name="password" autofocus="" required>
-                                                    <span id="passwordError" class="error-message position-absolute"></span>
-                                                </div>
-                                            </div>-->
-                                            <div class="col-sm-6 col-md-5 col-lg-6 mb-3" style="display: grid;">
-                                                <label for="confirmPassword" class="form-label">Email</label>
-                                                <div class="position-relative">
-                                                    <input id="email" value="${u.email}"class="form-control" style="padding: .375rem .75rem; width: 100%" type="text" name="email" autofocus="" required>
-                                                    <span id="emailError" class="error-message position-absolute"></span>
-                                                </div>    
+                                        <div class="mb-3" style="display: grid;">
+                                            <label for="confirmPassword" class="form-label">Email</label>
+                                            <div class="position-relative">
+                                                <input id="email" value="${u.email}"class="form-control" style="padding: .375rem .75rem; width: 100%" type="text" name="email" autofocus="" required>
+                                                <span id="emailError" class="error-message position-absolute"></span>
+                                                <div class="d-block text-danger" style="margin-top:10px;margin-bottom:10px"><b>${messE}</b></div>
                                             </div>
                                         </div>
                                         <div class="center" style="display: flex;">
@@ -194,7 +200,7 @@
                                     </div>
                                 </div>
                                 <div class="" style="display:flex;justify-content: center;margin-top: 10px">
-                                    <input type="submit" value="UPDATE PROFILE" onsubmit="validateForm()">
+                                    <input type="submit" value="UPDATE PROFILE" onsubmit="validateForm()" id="submitBtn">
                                     <a href="home" class="link-underline link-underline-opacity-0" style="display: flex;align-items: center; color:#B0B0B0; margin-left: 15px">Cancel</a>
                                 </div>
                             </form>

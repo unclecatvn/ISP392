@@ -177,7 +177,7 @@ public class UserDAO {
 
     public ArrayList<User> getAllUser() {
         ArrayList<User> list = new ArrayList<>();
-        String sql = "SELECT * FROM [User]";
+        String sql = "select * from [User] where role_id != 1";
         try {
             PreparedStatement stm = new DBContext().getConnection().prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
@@ -403,9 +403,59 @@ public class UserDAO {
         }
         return null;
     }
+    
+    public boolean checkRollNum(String roll) {
+        String sql = "SELECT * FROM [User] WHERE roll_number = ?";
+        try {
+            PreparedStatement stm = new DBContext().getConnection().prepareStatement(sql);
+            stm.setString(1, roll);
+            ResultSet rs = stm.executeQuery();
+            boolean exists = rs.next();
+            return exists;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public ArrayList<User> getAssignedStudent() {
+        ArrayList<User> list = new ArrayList<>();
+        String sql = "select e.student_id from enroll e group by e.student_id";
+        try {
+            PreparedStatement stm = new DBContext().getConnection().prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                User c = new User(rs.getInt(1));
+                list.add(c);
+            }
+
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public ArrayList<User> getAssignedTeacher() {
+        ArrayList<User> list = new ArrayList<>();
+        String sql = "select e.teacher_id from enroll e group by e.teacher_id";
+        try {
+            PreparedStatement stm = new DBContext().getConnection().prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                User c = new User(rs.getInt(1));
+                list.add(c);
+            }
+
+        } catch (Exception e) {
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
+        ArrayList<User> l = dao.getAssignedStudent();
+        for (User user : l) {
+            System.out.println(user);
+        }
         //dao.updateUser("hahaha", email, phone, true, rollNumber, 0);
         //dao.updateUser("haha",  "11111", false, "h111", 2, "haha@fpt.edu.vn");
 //        User u = dao.getUserById(9);
@@ -422,14 +472,14 @@ public class UserDAO {
 //        } else {
 //            System.out.println("Nothing");
 //        }
-//        dao.sendEmailForgot("anhlvhe172133@fpt.edu.vn");
+        dao.sendEmailForgot("anhlvhe172133@fpt.edu.vn");
 //        if (dao.checkForgotKeyExist("anhlvhe172133@fpt.edu.vn", "bITFj0") == true) {
 //            System.out.println("True");
 //        } else {
 //            System.out.println("False");
 //        }
 //        dao.changePassword("1235", "anhlvhe172133@fpt.edu.vn");
-        System.out.println(dao.countUserByRoleId(2));
+//        System.out.println(dao.countUserByRoleId(2));
     }
 
 }

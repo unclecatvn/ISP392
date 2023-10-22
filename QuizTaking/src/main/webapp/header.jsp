@@ -26,7 +26,7 @@
             }
         </style>
     </head>
-    <body style="background-color: #F7F7F7">
+    <body>
         <header class="header">
             <!-- Đây là navbar -->
             <nav class="navbar" style="background-color: white;">

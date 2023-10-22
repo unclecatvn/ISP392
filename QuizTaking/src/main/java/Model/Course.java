@@ -9,6 +9,7 @@ package Model;
  * @author ADMIN
  */
 public class Course {
+
     private int courseId;
     private String courseName;
     private String courseDescription;
@@ -17,6 +18,15 @@ public class Course {
         this.courseId = courseId;
         this.courseName = courseName;
         this.courseDescription = courseDescription;
+    }
+
+    public Course(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public Course(int courseId, String courseName) {
+        this.courseId = courseId;
+        this.courseName = courseName;
     }
 
     public int getCourseId() {
@@ -48,7 +58,4 @@ public class Course {
         return "Course{" + "courseId=" + courseId + ", courseName=" + courseName + ", courseDescription=" + courseDescription + '}';
     }
 
-    
-    
-    
 }

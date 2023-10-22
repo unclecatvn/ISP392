@@ -82,7 +82,7 @@
     padding: 6px 6px 6px 50px;
     margin-top: -10px;
     background-color: #e7e7e7;
-    /*display:none;*/
+    display:none;
     line-height: 30px;
     opacity: 1;
 }
@@ -93,7 +93,7 @@
     transition: height 0.3s ease-in-out;
 }
 
-.sidebar .nav-links li .icon-link .bx.bx-chevron-down{
+.sidebar .nav-links li .icon-link .bx.bx-chevron-down.dropdown-icon{
     opacity: 1;
 }
 
@@ -112,7 +112,7 @@
     padding-top: 0;
 }
 
-.sidebar.open .nav-links li .icon-link .bx.bx-chevron-down,
+.sidebar.open .nav-links li .icon-link .bx.bx-chevron-down.dropdown-icon,
 .sidebar.open .nav-links li .sub-menu,
 .sidebar.open .nav-links li a .link-name{
     opacity: 0;

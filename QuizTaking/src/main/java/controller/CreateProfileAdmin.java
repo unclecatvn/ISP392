@@ -82,8 +82,16 @@ public class CreateProfileAdmin extends HttpServlet {
         int role = Integer.parseInt(request.getParameter("role").trim());
         String rollNumber = request.getParameter("rollNumber").trim();
         UserDAO udb = new UserDAO();
-        udb.createNewProfile(name, email, gender, cap, phone, status, role, rollNumber);
-        response.sendRedirect("viewlistuser");
+        if (udb.checkEmail(email)) {
+            request.setAttribute("messE", "this email has existed");
+            request.getRequestDispatcher("createuserprofile.jsp").forward(request, response);
+        } else if (udb.checkRollNum(rollNumber)) {
+            request.setAttribute("messR", "this roll number has existed");
+            request.getRequestDispatcher("createuserprofile.jsp").forward(request, response);
+        } else {
+            udb.createNewProfile(name, email, gender, cap, phone, status, role, rollNumber);
+            response.sendRedirect("viewlistuser");
+        }
     }
 
     /**

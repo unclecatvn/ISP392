@@ -23,6 +23,10 @@ public class User {
     public User() {
     }
 
+    public User(int userId) {
+        this.userId = userId;
+    }
+
     public User(int userId, String userName, String email, boolean gender, String password, String phone, boolean status, int roleId, String rollNumber) {
         this.userId = userId;
         this.userName = userName;
@@ -58,8 +62,19 @@ public class User {
         this.userName = userName;
         this.email = email;
     }
-    
-    
+
+    public User(int userId, String userName, String email, String rollNumber) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.rollNumber = rollNumber;
+    }
+
+    public User(String userName, String email, String phone) {
+        this.userName = userName;
+        this.email = email;
+        this.phone = phone;
+    }
     
     
 
@@ -160,6 +175,5 @@ public class User {
     public String toString() {
         return "User{" + "userId=" + userId + ", userName=" + userName + ", email=" + email + ", gender=" + gender + ", password=" + password + ", phone=" + phone + ", status=" + status + ", roleId=" + roleId + ", rollNumber=" + rollNumber + '}';
     }
-    
-    
+
 }

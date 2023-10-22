@@ -25,7 +25,7 @@
                 <div class="center justify-content-center align-items-center">
                     <h1 class="justify-content-center">
                         <span class="h1-reset">Reset Password</span>
-                        <span class="h1-tittle" style="">Please enter the email you use to sign in</span>
+                        <span class="h1-tittle" style="">Please enter the OTP code you have received</span>
                     </h1>
                     <form action="confirmKey" method="post">
                         <!--<form>-->

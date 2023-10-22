@@ -324,6 +324,29 @@ public class EnrollDAO {
         return null;
     }
 
+    public Enroll getEnrollId(int studentId, int classId, int courseId) {
+        String sql = "SELECT e.* FROM Enroll e\n"
+                + "JOIN [User] u\n"
+                + "ON u.user_id = e.student_id\n"
+                + "WHERE class_id = ? AND course_id = ? AND e.student_id = ?";
+        try {
+            PreparedStatement stm = new DBContext().getConnection().prepareStatement(sql);
+            stm.setInt(1, classId);
+            stm.setInt(2, courseId);
+            stm.setInt(3, studentId);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getInt("student_id"));
+                Classes s = new Classes(rs.getInt("class_id"));
+                Course c = new Course(rs.getInt("course_id"));
+                Enroll e = new Enroll(rs.getInt("enroll_id"), s, c, u);
+                return e;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         EnrollDAO dao = new EnrollDAO();
 //        ArrayList<Enroll> list = dao.getAllCourseByUser(1);
@@ -352,12 +375,14 @@ public class EnrollDAO {
 //        Enroll e = dao.getCourseById(1, 2);
 //        System.out.println(e.toString());
 //        ArrayList<User> sp = dao.getAllStudentPerCourse(1, 2);
-//        for (User user : sp) {
-//            System.out.println(user);
+////        for (User user : sp) {
+////            System.out.println(user);
+////        }
+//        ArrayList<Enroll> list = dao.getAllClassByCourseId(2);
+//        for (Enroll enroll : list) {
+//            System.out.println(enroll.toString());
 //        }
-        ArrayList<Enroll> list = dao.getAllClassByCourseId(2);
-        for (Enroll enroll : list) {
-            System.out.println(enroll.toString());
-        }
+//        Enroll e = dao.getCourseById(1, 1);
+//        System.out.println(e.toString());
     }
 }

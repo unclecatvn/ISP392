@@ -63,7 +63,7 @@
                     requirementsMet = false;
                 } else {
                     document.getElementById("errorMessage").innerHTML = "";
-                    requirementsMet = true;
+                    
                 }
 
                 // Cập nhật màu nền của nút "CONFIRM"

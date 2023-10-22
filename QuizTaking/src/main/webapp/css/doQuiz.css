@@ -1,0 +1,100 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 1, 2023, 12:53:16 AM
+    Author     : ADMIN
+*/
+
+input[type="submit"] {
+    width: 40%;
+    height: 50px;
+    border: 1px solid;
+    background: #F26F21;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="submit"]:hover {
+    border-color: #F26F21;
+    transition: .5s;
+}
+
+button.button-fix.btn.btn-primary {
+    background-color:#F26F21;
+    border: #F26F21;
+    font-size: 15px;
+    height:40px;
+}
+
+button.button-banking.btn.btn-primary {
+    /*border: #F26F21;*/
+    font-size: 15px;
+    height:40px;
+    --bs-btn-bg: none;
+    color:#F26F21;
+    --bs-btn-border-color: #F26F21;
+    --bs-btn-hover-bg: none;
+    --bs-btn-active-bg: none;
+}
+
+.inputQuestion {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.answer-group {
+    display:flex;
+
+}
+
+.showQuestion {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.showQuestion .showQuestionTitle {
+    align-items: center;
+    background-color: #F26F21;
+    padding: 5px;
+    display:flex;
+    justify-content: space-between;
+    border-radius: 8px 8px 0px 0px;
+    font-weight: 700;
+    color:white;
+}
+
+.showQuestion li{
+    list-style: none;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.showQuestion a{
+    text-decoration: none;
+}
+
+.showQuestion .sub-menu{
+    background-color: #e5e5e5;
+    border-radius: 0px 0px 8px 8px;
+    display:none;
+}
+
+/*.showQuestion:hover .sub-menu {
+        display: block;
+        transition: all 0.4s ease;
+    }*/
+
+.showQuestion .sub-menu .sub-menuQuestion {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.showQuestion .sub-menu p{
+    margin-bottom: 0;
+}

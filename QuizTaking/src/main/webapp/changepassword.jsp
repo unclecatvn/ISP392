@@ -51,7 +51,7 @@
                     requirementsMet = false;
                 } else {
                     document.getElementById("errorMessage").innerHTML = "";
-                    requirementsMet = true;
+                    
                 }
 
                 // Cập nhật màu nền của nút "CONFIRM"
@@ -65,7 +65,7 @@
             }
         </script>
     </head>
-    <body>
+    <body id="body">
         <c:if test="${sessionScope.user == null}">
             <c:redirect url="login-google" />
         </c:if>

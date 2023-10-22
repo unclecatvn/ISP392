@@ -19,7 +19,8 @@ public class SendMail {
         Content content = new Content("text/plain", contentText);
         Mail mail = new Mail(from, subject, to, content);
 
-        SendGrid sg = new SendGrid("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");
+//        SendGrid sg = new SendGrid("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");
+        SendGrid sg = new SendGrid("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");
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
@@ -50,11 +51,11 @@ public class SendMail {
 
     public static void main(String[] args) throws IOException {
         SendMail s = new SendMail();
-//        String toEmail = "levietanh20033002@gmail.com";
-//        String subject = "Sending with SendGrid is Fun";
-//        String contentText = "and easy to do anywhere, even with Java";
-//
-//        s.send(toEmail, subject, contentText);
+        String toEmail = "levietanh20033002@gmail.com";
+        String subject = "Sending with SendGrid is Fun";
+        String contentText = "and easy to do anywhere, even with Java";
+
+        s.send(toEmail, subject, contentText);
         System.out.println(s.createCaptcha());
     }
 }

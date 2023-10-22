@@ -9,6 +9,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png"/>
         <link rel="stylesheet" href="./css/userprofile.css"/>
+
+        <style>
+            .error-message {
+                color: red;
+                font-size: 12px;
+                margin-top: 5px;
+                left: 0;
+                bottom: -20px;
+            }
+        </style>
+        
+        <script>
+            function validateForm() {
+
+                var userName = document.detail.user_name.value;
+                var phone = document.detail.phone.value;
+                var statusN = false;
+                var statusP = false;
+                var status = false;
+
+                //check username
+                if (!/^[a-zA-Z\s]+$/.test(userName)) {
+                    document.getElementById("userNameError").innerHTML = "Username contains only letters";
+                    statusN = false;
+                } else {
+                    document.getElementById("userNameError").innerHTML = "";
+                    statusN = true;
+                }
+
+                //check phone
+                if (!/^\d{10,11}$/.test(phone)) {
+                    document.getElementById("phoneError").innerHTML = "contain 10-11 numbers";
+                    statusP = false;
+                } else {
+                    document.getElementById("phoneError").innerHTML = "";
+                    statusP = true;
+                }
+                
+                if(statusN && statusP){
+                    status = true;
+                }else{
+                    status = false;
+                }
+            }
+        </script>
     </head>
     <body>
         <c:if test="${sessionScope.user == null}">
@@ -41,12 +86,15 @@
 
 
                         <div class="container mt-5" style="background-color: #F8F5F5; padding: 20px; border-radius: 10px;">
-                            <form action="userdetail" method="post" onsubmit="return validateForm()">
+                            <form name="detail" action="userdetail" method="post" onsubmit="return validateForm()">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="fullname" class="form-label">Full Name</label>
-                                            <input value="${u.userName}" type="text" id="fullname" name="fullname" class="form-control" maxlength="30">
+                                            <div class="position-relative">
+                                                <input id="user_name" value="${u.userName}" class="form-control" type="text" id="password" name="fullname" class="form-control"  required minlength="4">
+                                                <span id="userNameError" class="error-message position-absolute"></span>
+                                            </div> 
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
@@ -54,7 +102,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="phone" class="form-label">Phone</label>
-                                            <input value="${u.phone}" type="text" id="phone" name="phone" class="form-control" maxlength="11">
+                                            <div class="position-relative">
+                                                <input id="phone" value="${u.phone}" class="form-control" style="padding: .375rem .75rem; width: 100%" type="text" name="phone" autofocus="" required minlength="10" maxlength="11">
+                                                <span id="phoneError" class="error-message position-absolute"></span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

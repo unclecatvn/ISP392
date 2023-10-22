@@ -8,6 +8,7 @@ package controller;
 import Model.Enroll;
 
 import dal.EnrollDAO;
+import dal.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -62,12 +63,16 @@ public class CourseDetailController extends HttpServlet {
 //        processRequest(request, response);
         String courseId = request.getParameter("courseId");
         String classId = request.getParameter("classId");
+        String message = request.getParameter("message")==null?"":request.getParameter("message");
+        request.setAttribute("message", message);
 //        CourseDetailDAO dao = new CourseDetailDAO();
         EnrollDAO dao = new EnrollDAO();
+        QuizDAO quizDAO = new QuizDAO();
 //        CourseDetail cd = dao.getCourseById(Integer.parseInt(class_id), Integer.parseInt(course_id));
         Enroll cd = dao.getCourseById(Integer.parseInt(classId), Integer.parseInt(courseId));
         request.setAttribute("sp", dao.getAllStudentPerCourse(Integer.parseInt(classId), Integer.parseInt(courseId)));
         request.setAttribute("cd", cd);
+        request.setAttribute("quiz", quizDAO.getAllQuiz(Integer.parseInt(classId), Integer.parseInt(courseId)));
         request.getRequestDispatcher("courseDetail.jsp").forward(request, response);
     }
 
@@ -82,7 +87,7 @@ public class CourseDetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     /**

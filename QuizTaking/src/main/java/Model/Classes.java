@@ -23,6 +23,12 @@ public class Classes {
         this.endDate = endDate;
     }
 
+    public Classes(int classId) {
+        this.classId = classId;
+    }
+    
+    
+
     public int getClassId() {
         return classId;
     }

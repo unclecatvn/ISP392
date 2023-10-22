@@ -130,7 +130,7 @@
                                                                 // Sử dụng AJAX để tải danh sách lớp từ servlet
                                                                 $.ajax({
                                                                     type: 'POST',
-                                                                    url: 'home', // Thay thế bằng URL của servlet của bạn
+                                                                    url: 'home', // URL của servlet
                                                                     data: {courseId: courseId},
                                                                     dataType: 'json',
                                                                     success: function (data) {
@@ -184,8 +184,8 @@
                                                     <p class="card-text">Teacher: ${l.teacher.userName}</p>
                                                     <p class="card-text">Number of students: ${l.totalStudent}</p>
                                                     <p class="card-text">
-                                                        <fmt:formatDate pattern="dd-MM-yyyy" value="${l.classes.startDate}" var="startDate"/> ${startDate}
-                                                        <fmt:formatDate pattern="dd-MM-yyyy" value="${l.classes.endDate}" var="endDate"/> ${endDate}
+                                                        <fmt:formatDate pattern="dd-MM-yyyy" value="${l.classes.startDate}" var="startDate"/>   ${startDate}/
+                                                        <fmt:formatDate pattern="dd-MM-yyyy" value="${l.classes.endDate}" var="endDate"/>${endDate}
                                                     </p>
                                                     <a class="link-underline link-underline-opacity-0" href="courseDetail?classId=${l.classes.classId}&courseId=${l.course.courseId}">Go to course</a>
                                                 </div>

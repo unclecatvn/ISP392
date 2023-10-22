@@ -53,14 +53,14 @@
                             </a>
                         </li> 
                     </c:if>
-                    <c:if test ="${sessionScope.user.roleId == 3}">
+                    <c:if test ="${sessionScope.user.roleId != 1}">
                         <li>
                             <div class="icon-link">
                                 <a href="#">
                                     <i class='bx bxs-user-account' ></i>
                                     <span class="link-name">User Setting</span>
                                 </a>
-                                <i class='bx bx-chevron-down'></i>
+                                <i class='bx bx-chevron-down dropdown-icon'></i>
                             </div>
                             <ul class="sub-menu">
                                 <li><a href="userdetail?email=${sessionScope.user.email}">View Profile</a></li>
@@ -68,15 +68,15 @@
                             </ul>
 
                         </li>
-                        
-                        <li>
+
+<!--                        <li>
                             <div class="icon-link">
                                 <a href="viewClass.jsp">
                                     <i class='bx bxs-school'></i>
                                     <span class="link-name">View Class</span>
                                 </a>
                             </div>
-                        </li>
+                        </li>-->
                     </c:if>
                     <c:if test ="${sessionScope.user.roleId == 1}">
                         <li>
@@ -85,14 +85,14 @@
                                     <i class='bx bxs-user-account' ></i>
                                     <span class="link-name">Admin Setting</span>
                                 </a>
-                                <i class='bx bx-chevron-down'></i>
+                                <i class='bx bx-chevron-down dropdown-icon'></i>
                             </div>
                             <ul class="sub-menu">
                                 <li><a href="userdetail?email=${sessionScope.user.email}">View Profile</a></li>
                                 <li><a href="changepassword">Change Password</a></li>
                                 <li><a href="viewlistuser">Manage Accounts</a></li>
-                                <li><a href="url">Manage Class</a></li>
-                                <li><a href="manageCourse.jsp">Manage Course</a></li>
+                                <li><a href="manageclass">Manage Class</a></li>
+                                <li><a href="manageCourse">Manage Course</a></li>
                             </ul>
                         </li>
                     </c:if> 
@@ -120,6 +120,39 @@
                         closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
                     }
                 }
+
+                let dropdownIcons = document.querySelectorAll(".dropdown-icon");
+
+                // Check and set the dropdown states on page load
+                window.addEventListener("DOMContentLoaded", () => {
+                    dropdownIcons.forEach((icon, index) => {
+                        let submenu = icon.closest('li').querySelector(".sub-menu");
+                        let state = localStorage.getItem('dropdownState_' + index);
+                        if (state === "open") {
+                            submenu.style.display = "block";
+                            icon.classList.replace("bx-chevron-down", "bx-chevron-up");
+                        } else {
+                            submenu.style.display = "none";
+                            icon.classList.replace("bx-chevron-up", "bx-chevron-down");
+                        }
+                    });
+                });
+
+                // Handle dropdown icon clicks
+                dropdownIcons.forEach((icon, index) => {
+                    icon.addEventListener("click", (event) => {
+                        let submenu = event.target.closest('li').querySelector(".sub-menu");
+                        if (submenu.style.display === "block") {
+                            submenu.style.display = "none";
+                            icon.classList.replace("bx-chevron-up", "bx-chevron-down");
+                            localStorage.setItem('dropdownState_' + index, "closed");
+                        } else {
+                            submenu.style.display = "block";
+                            icon.classList.replace("bx-chevron-down", "bx-chevron-up");
+                            localStorage.setItem('dropdownState_' + index, "open");
+                        }
+                    });
+                });
             </script>
         </c:if>
     </body>

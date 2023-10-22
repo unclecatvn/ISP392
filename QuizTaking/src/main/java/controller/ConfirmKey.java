@@ -74,6 +74,7 @@ public class ConfirmKey extends HttpServlet {
                 request.getRequestDispatcher("changePasswordForgot.jsp").forward(request, response);
             }
         }
+        System.out.println(email);
     }
 
     /**
